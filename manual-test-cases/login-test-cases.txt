@@ -1,0 +1,23 @@
+Feature: Login
+    
+    Scenario: Succesful login with standard user
+    Given user is on login page
+    When user logs in as a standard user
+    Then user should see the products page
+
+    Scenario: Fail to login with locked out user
+    Given user is on login page
+    When user logs in as locked out user
+    Then user should see error message indicating user is locked out
+
+    Scenario: Problem user sees incorrect product thumbnails on the Products page
+    Given user is on login page
+    When user logs in as an problem user
+    Then product thumbnails should not match their product names
+
+    Scenario: Performance glitch user experiences slow login
+    Given user is on the login page
+    When user logs in as a performance glitch user
+    Then login should take longer than normal
+    And user should eventually see the dashboard
+
