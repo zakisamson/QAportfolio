@@ -19,5 +19,45 @@ Feature: Login
     Given user is on the login page
     When user logs in as a performance glitch user
     Then login should take longer than normal
-    And user should eventually see the dashboard
+    And user should eventually see the Products page
 
+    Scenario: Error user cannot interact with web page
+    Given user is on login page
+    When user logs in as a error user
+    Then user cannot interact with web page
+
+    Scenario: User enters wrong username but correct password
+    Given user is on login page
+    When user uses the wrong username but correct password to log in
+    Then user should see error message indicating it doesnt match any user
+
+    Scenario: User enters correct username but wrong password
+    Given user is on login page
+    When user uses the correct username but wrong password to log in
+    Then user should see error message indicating it doesnt match any user
+
+    Scenario: User enters username but wrong password
+    Given user is on login page
+    When user uses the correct username but wrong password to log in
+    Then user should see error message indicating it doesnt match any user
+
+    Scenario: User enters username with a space in front
+    Given user is on login page
+    When user puts space in front of username to log in
+    Then user should see error message indicating it doesn't match any user
+
+    Scenario: User enters username in uppercase
+    Given user is on login page
+    And username is not in uppercase
+    When user enters username in uppercase to log in
+    Then user should see error message indicating it doesn't match any user
+
+    Scenario: User only enters password
+    Given user is on login page
+    When user only enters password to log in
+    Then user should see error message indicating username is required
+
+    Scenario: User only enters username
+    Given user is on login page
+    When user only enters username to log in
+    Then user should see error message indicating password is required
