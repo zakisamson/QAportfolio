@@ -1,6 +1,12 @@
 Feature: End to End
 
-    Scenario: Succesfully checkout single item
-    Given user logged in as standard user
-    When 
-    Then
+    Scenario: Succesfully checkout a single item
+    Given the user logged in as a standard user
+    When user clicks on to "Sauce Labs Backpack" item name
+    And user clicks the "Add to cart" button on item detail page
+    And user clicks the Cart icon on navigation bar
+    And user clicks the "Checkout" button
+    And user fills in checkout information with valid data
+    And user clicks the "Continue" button on Checkout Information page
+    And user clicks the "Finish" button on Checkout Overview page
+    Then user receive order success message "Thank you for your order!"
