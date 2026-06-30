@@ -1,12 +1,26 @@
 Feature: End to End
 
-    Scenario: Succesfully checkout a single item
-    Given the user logged in as a standard user
-    When user clicks on to "Sauce Labs Backpack" item name
-    And user clicks the "Add to cart" button on item detail page
-    And user clicks the Cart icon on navigation bar
-    And user clicks the "Checkout" button
-    And user fills in checkout information with valid data
-    And user clicks the "Continue" button on Checkout Information page
-    And user clicks the "Finish" button on Checkout Overview page
-    Then user receive order success message "Thank you for your order!"
+    Scenario: Successfully checkout a single item
+        Given the user is logged in as a standard user
+        When the user clicks on the "Sauce Labs Backpack" item name
+        And the user clicks the "Add to cart" button on the item detail page
+        And the user clicks the Cart icon on the navigation bar
+        And the user clicks the "Checkout" button on the Your Cart page
+        And the user fills in the checkout information with valid data
+        And the user clicks the "Continue" button on the Checkout Information page
+        And the user clicks the "Finish" button on the Checkout Overview page
+        Then the order is placed successfully
+
+    Scenario: Successfully checkout multiple items
+        Given the user is logged in as a standard user
+        When the user clicks on the "Sauce Labs Backpack" item name
+        And the user clicks the "Add to cart" button on the item detail page
+        And the user clicks the "Back to products" button
+        And the user clicks on the "Sauce Labs Bike Light" item name
+        And the user clicks the "Add to cart" button on the item detail page
+        And the user clicks the Cart icon on the navigation bar
+        And the user clicks the "Checkout" button on the Your Cart page
+        And the user fills in the checkout information with valid data
+        And the user clicks the "Continue" button on the Checkout Information page
+        And the user clicks the "Finish" button on the Checkout Overview page
+        Then the order is placed successfully
