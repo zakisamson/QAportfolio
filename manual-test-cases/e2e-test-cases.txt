@@ -1,0 +1,6 @@
+Feature: End to End
+
+    Scenario: Succesfully checkout single item
+    Given user logged in as standard user
+    When 
+    Then
